@@ -85,13 +85,8 @@ class email_html():
 
     def personalize(self, template, user, predictions):
         today = datetime.date.today()
-        if today.weekday() == 4:
-            days = 3
-        else:
-            days = 1
-        tomorrow = today + datetime.timedelta(days=days)
-        tomorrow_str = tomorrow.strftime("%m/%d/%Y")
-        bodyContent = template.render(firstname=user[0], date=tomorrow_str, predictions=predictions)
+        today_str = today.strftime("%d/%m/%Y")
+        bodyContent = template.render(firstname=user[0], date=today_str, predictions=predictions)
         return bodyContent
 
     def attach_images(self, message):
